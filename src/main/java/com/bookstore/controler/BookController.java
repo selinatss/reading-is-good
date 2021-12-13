@@ -23,9 +23,9 @@ public class BookController {
     @PostMapping(value = "/save")
     public ResponseEntity<RestResponse> create(@RequestBody Book book) {
         try {
-            bookService.createBook(book);
+            Book savedBook = bookService.createBook(book);
             logger.info("Book saved successfully");
-            return ResponseEntity.ok().body(RestResponse.of(HttpStatus.OK, Constant.successMessage));
+            return ResponseEntity.ok().body(RestResponse.of("id = " + savedBook.getId(), HttpStatus.OK, Constant.successMessage));
         } catch (Exception e) {
             logger.error("Error during book saved");
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.INTERNAL_SERVER_ERROR, Constant.errorMessage));

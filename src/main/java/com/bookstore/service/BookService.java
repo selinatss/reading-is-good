@@ -14,9 +14,9 @@ public class BookService {
     @Autowired
     BookDao bookDao;
 
-    public void createBook(Book book){
+    public Book createBook(Book book){
         book.setStockDate(new Date());
-        bookDao.save(book);
+        return bookDao.save(book);
     }
 
     public List<Book> getAllBooks(){
