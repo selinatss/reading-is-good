@@ -47,9 +47,10 @@ public class BookController {
     public ResponseEntity<RestResponse> updateBookStock(@RequestParam String id, @RequestParam int stockCount){
         try{
             bookService.updateBookStock(id, stockCount);
+            logger.error("Books stock updated process");
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.OK, Constant.successMessage));
         } catch (Exception e) {
-            logger.error("Error during book saved");
+            logger.error("Error during stock update process");
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.INTERNAL_SERVER_ERROR, Constant.errorMessage));
         }
     }
@@ -62,7 +63,7 @@ public class BookController {
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.OK, Constant.successMessage));
         }
         catch (Exception e){
-            logger.error("Error during book deleted");
+            logger.error("Error during book delete process");
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.INTERNAL_SERVER_ERROR, Constant.errorMessage));
         }
     }

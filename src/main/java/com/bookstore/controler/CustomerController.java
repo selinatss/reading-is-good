@@ -27,7 +27,7 @@ public class CustomerController {
             logger.info("Customer registered successfully");
             return ResponseEntity.ok().body(RestResponse.of("id = " + savedCustomer.getId(),HttpStatus.OK, Constant.successMessage));
         } catch (Exception e) {
-            logger.error("Error during customer register");
+            logger.error("Error during customer register process");
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.INTERNAL_SERVER_ERROR, Constant.errorMessage));
         }
     }
@@ -43,13 +43,13 @@ public class CustomerController {
         }
     }
 
-    @GetMapping(value = "orders")
+    @GetMapping(value = "/orders")
     public ResponseEntity<RestResponse> getCustomerOrders(@RequestParam String customerId){
         try {
             return ResponseEntity.ok().body(RestResponse.of(customerService.listAllOrdersOfCustomer(customerId),
                     HttpStatus.OK, Constant.successMessage));}
         catch (Exception e){
-            logger.error("Error during book saved");
+            logger.error("Error during order save process");
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.INTERNAL_SERVER_ERROR, Constant.errorMessage));
         }
     }

@@ -28,10 +28,10 @@ public class OrderController {
     public ResponseEntity<RestResponse> create(@RequestBody Order order) {
         try {
             Order savedOrder = orderService.saveOrder(order);
-            logger.info("Customer registered successfully");
+            logger.info("Order registered successfully");
             return ResponseEntity.ok().body(RestResponse.of("id = " + savedOrder.getId(), HttpStatus.OK, Constant.successMessage));
         } catch (Exception e) {
-            logger.error("Error during customer register");
+            logger.error("Error during customer register process");
             return ResponseEntity.ok().body(RestResponse.of(HttpStatus.INTERNAL_SERVER_ERROR, Constant.errorMessage));
         }
     }

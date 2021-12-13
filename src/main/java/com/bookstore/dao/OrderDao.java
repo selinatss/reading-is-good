@@ -11,5 +11,5 @@ public interface OrderDao extends MongoRepository<Order, String> {
 
     List<Order> findByCustomer_Id(String id);
 
-    List<Order> findByCustomer_IdAndOrderDate_Month(String id, int month);
+    List<Order> findByCustomer_IdAndOrderDateBetween(String id, Date startDate, Date endDate);
 }

@@ -4,7 +4,6 @@ import com.bookstore.model.CustomUser;
 import com.bookstore.service.CustomUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.quartz.QuartzTransactionManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
