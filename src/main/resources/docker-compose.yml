@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  mymongodb:
+    image: mongo:latest
+    container_name: mymongodb
+    ports:
+      - 27017:27017
+  reading-is-good:
+    image: reading-is-good:0.0.1-SNAPSHOT
+    container_name: reading-is-good
+    ports:
+      - 8080:8080
+    links:
+      - mymongodb
